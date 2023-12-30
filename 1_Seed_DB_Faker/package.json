@@ -1,0 +1,21 @@
+{
+  "name": "movie_db",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "create-db": "psql -U postgres < schema.sql",
+    "seed": "yarn create-db && node src/main.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@faker-js/faker": "^8.3.1",
+    "dotenv": "^16.3.1",
+    "fast-csv": "^4.3.6",
+    "minimist": "^1.2.8",
+    "pg": "^8.11.3",
+    "validator": "^13.11.0"
+  }
+}

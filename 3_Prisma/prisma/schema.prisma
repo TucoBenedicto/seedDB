@@ -1,0 +1,23 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model comments {
+  id                 Int           @id @default(autoincrement())
+  comment            String?
+  fk_translations_id Int?
+  translations       translations? @relation(fields: [fk_translations_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model translations {
+  id       Int        @id @default(autoincrement())
+  key      String?    @db.VarChar(100)
+  lang     String?    @db.VarChar(100)
+  content  String?
+  comments comments[]
+}
